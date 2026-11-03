@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Leandro Sebastián Durante - Abogado Especialista</title>
+    <style>
+        :root {
+            --bg-color: #f7f6f4;
+            --text-dark: #1a1a1a;
+            --accent-color: #2b2b2e;
+            --border-color: #e5e5e5;
+            --font-main: 'Helvetica Neue', Arial, sans-serif;
+            --font-serif: Georgia, serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-family: var(--font-serif);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        .btn-nav {
+            border: 1px solid var(--text-dark);
+            padding: 10px 22px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-nav:hover {
+            background: var(--text-dark);
+            color: #ffffff;
+        }
+
+        /* SECCIÓN INICIAL (HERO) */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8%;
+            gap: 50px;
+        }
+
+        /* CONTENEDOR DE LA FOTO CON EL ENCUADRE PERFECTO (SIN PIERNAS) */
+        .hero-img {
+            flex: 1;
+            max-width: 480px;
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+            border-radius: 4px;
+            position: relative;
+            background: #e8e4df;
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Aquí aplicamos el zoom ideal para mostrar el torso y la cara, descartando las piernas */
+            transform: scale(1.35) translateY(-8%);
+            transform-origin: top center;
+            display: block;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: #555;
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-dark {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 14px 30px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+            display: inline-block;
+        }
+
+        .btn-dark:hover {
+            opacity: 0.9;
+        }
+
+        /* SECCIÓN QUIÉN SOY */
+        .quien-soy {
+            text-align: center;
+            padding: 90px 15%;
+            background: #ffffff;
+        }
+
+        .quien-soy h2 {
+            font-size: 2.4rem;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .quien-soy p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        /* SECCIÓN SERVICIOS */
+        .servicios {
+            padding: 90px 8%;
+            background: var(--bg-color);
+        }
+
+        .servicios-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 60px auto;
+        }
+
+        .servicios-header h2 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+        }
+
+        .servicios-header p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card-servicio {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .card-num {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 1.2rem;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        .card-servicio h3 {
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            padding-right: 40px;
+        }
+
+        .card-servicio p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CÓMO TRABAJAMOS */
+        .como-trabajamos {
+            padding: 90px 8%;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .como-trabajamos h2 {
+            font-size: 2.4rem;
+            margin-bottom: 50px;
+        }
+
+        .grid-pasos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .paso-box {
+            background: var(--bg-color);
+            padding: 40px 25px;
+            border-radius: 4px;
+            text-align: left;
+        }
+
+        .paso-box h4 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .paso-box h5 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .paso-box p {
+            color: #666;
+            font-size: 0.92rem;
+        }
+
+        /* CONTACTO Y FOOTER */
+        .contacto-footer {
+            padding: 90px 8%;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+        }
+
+        .info-contacto .logo {
+            margin-bottom: 25px;
+        }
+
+        .info-contacto p {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .menu-footer {
+            margin-top: 30px;
+        }
+
+        .menu-footer h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .menu-footer ul {
+            list-style: none;
+        }
+
+        .menu-footer li {
+            margin-bottom: 8px;
+        }
+
+        .menu-footer a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .form-contacto h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fafafa;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #000;
+            background: #fff;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-img {
+                max-width: 100%;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .contacto-footer {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ NAVEGACIÓN -->
+    <header>
+        <div class="logo">LS</div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#quien-soy">¿Quién soy?</a>
+            <a href="#servicios">Servicios</a>
+        </nav>
+        <a href="#contacto" class="btn-nav">Contactar</a>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <section class="hero" id="inicio">
+        <div class="hero-img">
+            <img src="mifoto-banner.png" alt="Dr. Leandro Sebastián Durante">
+        </div>
+        <div class="hero-content">
+            <h1>Abogado especialista en accidentes</h1>
+            <p>Microtransportados, ART, despidos, sucesiones, divorcios, contratos comerciales, registro de marcas y patentes.</p>
+            <div class="btn-group">
+                <a href="#quien-soy" class="btn-dark">Leer más</a>
+                <a href="#contacto" class="btn-dark">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN QUIÉN SOY -->
+    <section class="quien-soy" id="quien-soy">
+        <h2>¿Quién soy?</h2>
+        <p>Defensa legal integral cuando tu salud, tu trabajo o tu familia más lo necesitan. Soy egresado de la Universidad Argentina de la Empresa con más de 20 años en una reconocida trayectoria asesorando familias y empresas. Lo que me identifica es el trato humano y personalizado con cada cliente, mi entrega es absoluta y mis respuestas son inmediatas.</p>
+        <a href="#contacto" class="btn-dark">Contactame ahora</a>
+    </section>
+
+    <!-- SECCIÓN SERVICIOS -->
+    <section class="servicios" id="servicios">
+        <div class="servicios-header">
+            <h2>¿En qué puedo ayudarte?</h2>
+            <p>Este espacio es para presentar la sección Servicios. Describe brevemente los servicios ofrecidos y destaca beneficios o características especiales. Anima a los visitantes a saber más explorando la lista completa de servicios ofrecidos.</p>
+        </div>
+        <div class="grid-servicios">
+            <div class="card-servicio">
+                <span class="card-num">01</span>
+                <h3>Accidentes microtransportados</h3>
+                <p>Más de 350 casos resueltos. Si tuviste un accidente en la Ciudad de Buenos Aires, actuamos en defensa especializada de motociclistas, ciclistas y usuarios de monopatín eléctrico, Cuatris y UTV's.</p>
+            </div>
+            <div class="card-servicio">
+                <span class="card-num">02</span>
+                <h3>Divorcios y familia</h3>
+                <p>Sabemos que afrontar un conflicto familiar no es fácil y es mucho más que un trámite. Te acompañamos en este proceso para proteger tus derechos y los de tu familia.</p>
+            </div>
+            <div class="card-servicio">
+                <span class="card-num">03</span>
+                <h3>Derecho Laboral</h3>
+                <p>¿Fuiste despedido? ¿Tuviste algún accidente trabajando? ¿Tenés alguna enfermedad relacionada con tu empleo? ¿Trabajaste sin estar registrado o registrado incorrectamente? Más de 100 casos resueltos a favor del empleado.</p>
+            </div>
+            <div class="card-servicio">
+                <span class="card-num">04</span>
+                <h3>Registro de Marcas, Patentes, Diseños y Modelos de Utilidad</h3>
+                <p>Te asesoramos y gestionamos la presentación y obtención de Marcas, Patentes, Diseños Industriales y Modelos de Utilidad. Ayudamos a artistas, productores y diseñadores a registrar sus obras, garantizando su propiedad intelectual.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CÓMO TRABAJAMOS -->
+    <section class="como-trabajamos">
+        <h2>¿Cómo trabajamos?</h2>
+        <div class="grid-pasos">
+            <div class="paso-box">
+                <h4>Nº 1</h4>
+                <h5>ORIENTACIÓN GRATUITA</h5>
+                <p>Debes responder unas preguntas y contarnos brevemente que ocurrió. Tendrás una devolución para saber su situación requiere intervención legal y cuáles son los próximos pasos.</p>
+            </div>
+            <div class="paso-box">
+                <h4>Nº 2</h4>
+                <h5>CONSULTA JURÍDICA</h5>
+                <p>Si tu caso requiere un análisis más profundo, te propondremos una consulta paga. Analizaremos la documentación a detalle, resolveremos dudas y definiremos una estrategia.</p>
+            </div>
+            <div class="paso-box">
+                <h4>Nº 3</h4>
+                <h5>INICIO</h5>
+                <p>Iniciamos formalmente las gestiones legales correspondientes y el patrocinio judicial o extrajudicial.</p>
+            </div>
+            <div class="paso-box">
+                <h4>Nº 4</h4>
+                <h5>SEGUIMIENTO</h5>
+                <p>Mantenemos una comunicación fluida e informamos cada avance o novedad relevante de tu trámite o causa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO Y FOOTER -->
+    <section class="contacto-footer" id="contacto">
+        <div class="info-contacto">
+            <div class="logo">LS</div>
+            <p><strong>Ubicación:</strong> Tribunales, CABA.</p>
+            <p><strong>Tel:</strong> +54 2257 520152</p>
+            <p><strong>Email:</strong> drleandrosebastiandurante@gmail.com</p>
+            
+            <div class="menu-footer">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#quien-soy">¿Quién soy?</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                </ul>
+            </div>
+            
+            <div class="menu-footer">
+                <h4>Redes sociales</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Tik Tok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-contacto">
+            <h3>Contáctanos</h3>
+            <form action="#" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido *</label>
+                        <input type="text" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Asunto</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn-dark" style="width: 100%;">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
